@@ -76,7 +76,7 @@ Checking data quality was an important first step before interpreting relationsh
 
 The complete custom analysis is available in my Jupyter notebook:
 
-[**View the Custom EDA Notebook**](../notebooks/eda_lukestevers.ipynb)
+[**View the Custom EDA Notebook on GitHub**](https://github.com/lukestevers/module4/blob/main/notebooks/eda_lukestevers.ipynb)
 
 The notebook follows this workflow:
 
