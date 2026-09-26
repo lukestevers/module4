@@ -227,7 +227,7 @@ def main() -> None:
         "body_mass_g",
     ]
 
-    fig, ax = plt.subplots()
+    _, ax = plt.subplots()
 
     ax.boxplot(
         [female_mass, male_mass],
