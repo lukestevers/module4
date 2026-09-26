@@ -214,6 +214,34 @@ def main() -> None:
         CHART_DIR / "missing-values.png",
     )
 
+    # CUSTOM: Compare body mass distributions between female and male penguins.
+    sex_data = df.dropna(subset=["sex", "body_mass_g"])
+
+    female_mass = sex_data.loc[
+        sex_data["sex"] == "Female",
+        "body_mass_g",
+    ]
+
+    male_mass = sex_data.loc[
+        sex_data["sex"] == "Male",
+        "body_mass_g",
+    ]
+
+    fig, ax = plt.subplots()
+
+    ax.boxplot(
+        [female_mass, male_mass],
+        tick_labels=["Female", "Male"],
+    )
+
+    ax.set_title("Penguin Body Mass by Sex")
+    ax.set_xlabel("Sex")
+    ax.set_ylabel("Body Mass (g)")
+
+    save_chart(
+        ax,
+        CHART_DIR / "body-mass-by-sex.png",
+    )
     LOG.info("-------------------------------")
     LOG.info("04. DESCRIBE numeric variables.")
     LOG.info("-------------------------------")
