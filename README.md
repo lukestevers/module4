@@ -1,239 +1,179 @@
-# datafun-04-eda
+# Luke Stevers - Exploratory Data Analysis
 
-[![Workflow Guide](https://img.shields.io/badge/Pro--Guide-pro--analytics--02-green)](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](./pyproject.toml)
 [![uv managed](https://img.shields.io/badge/uv-managed-DE5FE9)](https://docs.astral.sh/uv/)
-[![ty type checked](https://img.shields.io/badge/ty-type_checked-2F80ED)](https://docs.astral.sh/ty/)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://docs.astral.sh/ruff/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-notebook-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
-[![marimo](https://img.shields.io/badge/marimo-reactive_notebook-FF6B6B)](https://docs.marimo.io/)
-[![Zensical docs](https://img.shields.io/badge/Zensical-docs-purple)](https://zensical.org/)
-[![MIT](https://img.shields.io/badge/license-see%20LICENSE-yellow.svg)](./LICENSE)
+[![Zensical](https://img.shields.io/badge/Zensical-docs-purple)](https://zensical.org/)
+[![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](./LICENSE)
 
-> Professional Python project: exploratory data analysis
-> including marimo and Jupyter notebooks.
+## Project Overview
 
-Notebooks combine narration and code.
-This project conducts an EDA using Python and also demonstrates
-two notebook options:
+This project demonstrates **Exploratory Data Analysis (EDA)** using Python, pandas, Seaborn, Matplotlib, and Jupyter notebooks.
 
-- **marimo** - a reactive Python notebook that can run as an interactive app
-- **Jupyter** - a widely used notebook format for interactive data analysis
+The project includes two related analyses:
 
-Note: With marimo, analysts can build interactive web apps!
-It's a whole new skill set, and not easy, but it does create
-engaging reports that showcase your analytic skills.
+1. A technical modification to the provided Palmer Penguins analysis comparing body mass between male and female penguins.
+2. A custom EDA investigation using the Seaborn `mpg` dataset to explore factors associated with vehicle fuel efficiency.
 
-## Motivation
+The goal of the project is to demonstrate a repeatable EDA workflow: inspect a dataset, evaluate data quality, summarize variables, visualize distributions, investigate relationships, and communicate findings clearly.
 
-When analysts receive a new dataset,
-they need to get to know it before deciding what questions it can answer.
-We look through the data, check its quality,
-examine how values are distributed, compare groups, and
-investigate patterns that might be interesting.
+---
 
-In this project, we'll develop a repeatable way to explore a new dataset.
-We'll also use notebooks and interactive tools
-that let us combine Python, visualizations, results,
-and our own observations as we investigate the data.
+## Phase 4: Penguin Analysis
 
-## This Project
+As part of the technical modification, I extended the original penguin analysis to compare **body mass between female and male penguins**.
 
-This project introduces **Exploratory Data Analysis (EDA)** using notebooks.
+The analysis removes records with missing values for sex or body mass and then uses a Matplotlib box plot to compare the two groups.
 
-When we encounter a new dataset, we want to explore quickly:
-run checks, view distributions, identify missing values or outliers.
-Notebooks combine Markdown narrative with Python code cells
-and are ideal for this kind of investigation.
+![Penguin Body Mass by Sex](docs/images/body-mass-by-sex.png)
 
-You will run the example notebook, read the code and narrative,
-and create your own project to explore a tabular dataset.
+### Observation
 
-## Produced Artifacts
+The box plot shows a noticeable difference in the distribution of body mass between female and male penguins. Male penguins generally have higher body mass values, although there is variation within both groups.
 
-This project produces the same EDA work in several useful forms.
+This analysis demonstrates how grouping data by a categorical variable can reveal differences that are not obvious from an overall summary.
 
-- [**Reactive EDA App (marimo)**](https://denisecase.github.io/datafun-04-eda/app/)
-  - run the analysis interactively in a browser
+---
 
-- [**Reactive EDA Notebook (marimo)**](./src/datafun/notebook.py)
-  - view the Python source used to create the reactive app
+## Phase 5: Custom EDA - Automobile Fuel Efficiency
 
-- [**Jupyter Notebook**](./notebooks/eda.ipynb)
-  - view the analysis in the traditional notebook format
+For my custom EDA project, I used the **Seaborn `mpg` dataset**.
 
-## Initial Results
+### Project Question
 
-![One analyst-selected relationship](docs/images/one-relationship.png)
+> **What vehicle characteristics are associated with differences in fuel efficiency?**
 
-![Bar chart of missing values by variable](docs/images/missing-values.png)
+The dataset contains automobile measurements and characteristics including:
 
-## Important Folders and Files
+- Miles per gallon (`mpg`)
+- Number of cylinders
+- Engine displacement
+- Horsepower
+- Vehicle weight
+- Acceleration
+- Model year
+- Country of origin
+- Vehicle name
 
-- **docs/** - the project narrative and documentation
-- **src/datafun** - Python code and marimo notebook
-- **notebooks/** - Jupyter notebook analysis
-- **zensical.toml** - update authorship & links
+The analysis is contained in:
 
-## Common Workflow
+**[`notebooks/eda_lukestevers.ipynb`](notebooks/eda_lukestevers.ipynb)**
 
-Follow the
-[step-by-step workflow guide](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
-carefully.
+---
 
-## Challenges
+## Data Inspection and Quality
 
-Challenges are expected.
-Sometimes instructions may not quite match your operating system.
-When issues occur, share screenshots, error messages,
-and details about what you tried.
-Working through issues is part of implementing professional projects.
+The dataset contains:
 
-## Success
+- **398 rows**
+- **9 variables**
+- **6 missing horsepower values**
+- **0 duplicate rows**
 
-After completing Phase 1. **Start & Run**, you'll have the example project,
-running on your machine.
-A new file `project.log` will appear in the root project folder
-and running the example script will print out:
+The analysis uses pandas to inspect the structure and quality of the dataset before examining relationships between variables.
 
-```shell
-===================================
-END main() - Executed successfully!
-===================================
-```
+The missing horsepower values were identified during the data-quality stage. Rather than treating missing values as a problem to hide, the EDA documents them as part of understanding the dataset.
 
-## Command Reference
+---
 
-The commands below are used in the workflow guide above.
-They are provided here for convenience.
+## Key Findings
 
-Follow the guide for the **full instructions**.
+### Vehicle Weight and Fuel Efficiency
 
-<details>
-<summary>Show command reference</summary>
+The strongest relationship investigated was between vehicle weight and fuel efficiency.
 
-### In a machine terminal (open in your `Repos` folder)
+The correlation between weight and MPG was approximately:
 
-Open a machine terminal in your `Repos` folder:
+**r = -0.832**
 
-```shell
-git clone https://github.com/denisecase/datafun-04-eda
+This indicates a strong negative linear association in this dataset: as vehicle weight increases, MPG generally decreases.
 
-cd datafun-04-eda
-code .
-```
+The scatter plot also shows this pattern visually.
 
-### In a VS Code terminal
+### Cylinders and Fuel Efficiency
 
-These are listed for convenience.
-For best results, follow the detailed instructions in
-[pro-analytics-02 guide](https://denisecase.github.io/pro-analytics-02/).
+Fuel efficiency also differs by number of cylinders.
 
-Use VS Code menu option `Terminal` / `New Terminal` to open a **VS Code terminal**
-in the root project folder.
-Copy each command, paste into your terminal, and hit ENTER,
-to run each command one at a time.
+The box plot shows that:
 
-```shell
-uv self update
-uv python pin 3.14
+- 4-cylinder vehicles generally have higher MPG values.
+- 6-cylinder vehicles tend to fall between the 4-cylinder and 8-cylinder groups.
+- 8-cylinder vehicles generally have lower MPG values.
+- The 3-cylinder group contains relatively few observations.
 
-uv python install
-uv lock --upgrade
-uv sync
+This suggests that engine configuration is associated with differences in fuel efficiency.
 
-uv run pre-commit install
-uv run pre-commit autoupdate
-
-git add -A
-uv run pre-commit run --all-files
-# repeat if changes were made by pre-commit tasks
-git add -A
-uv run pre-commit run --all-files
-
-# run the Python module
-uv run python -m datafun.app
-
-# run marimo nb as a reactive app
-# press Ctrl + C in the terminal to exit
-uv run marimo run src/datafun/notebook.py
-
-# Or: run marimo nb as a notebook
-uv run marimo edit src/datafun/notebook.py
-
-# Also: See notebooks/ for Jupyter notebooks
-
-# do chores
-uv run ruff format .
-uv run ruff check . --fix
-uv run ty check
-uv run python -m pytest
-uv run python -m zensical build
-
-# save progress as you work
-git add -A
-git commit -m "your message here"
-# repeat if changes were made (try the UP ARROW)
-git add -A
-git commit -m "your message here"
-
-git push -u origin main
-```
-
-</details>
-
-## Helpful Tips
-
-- Use the **UP ARROW** and **DOWN ARROW** in the terminal
-  to scroll through past commands.
-- Use `CTRL+f` to find (and replace) text within a file.
-
-## Much Can Be Ignored
-
-- You do not need to add to or modify `tests/`.
-  Tests are recommended and provided for example only.
-- Many files are silent helpers.
-  [Explore](https://denisecase.github.io/professional-python-project-explainer/)
-  as you like, but most files are never touched.
-- You do NOT need to understand everything;
-  let understanding build over time.
-
-## As Needed
-
-If VS Code does not automatically use the new `.venv` environment:
-
-1. Open the Command Palette (`Ctrl+Shift+P`).
-2. Run **Python: Select Interpreter**.
-3. Select the interpreter from this project's `.venv` folder.
-
-If VS Code still does not recognize the environment or newly installed tools:
-
-1. Open the Command Palette (`Ctrl+Shift+P`).
-2. Run **Developer: Reload Window**.
-
-## Troubleshooting >>>
-
-If you see something like this in your terminal: `>>>` or `...`
-You accidentally started Python interactive mode.
-It happens.
-Press `Ctrl c` (both keys together) or `Ctrl+Z` then `Enter` on Windows.
-
-## Documentation
-
-- [Documentation](https://denisecase.github.io/datafun-04-eda/)
-
-## Data Card
-
-- [Palmer Penguins Data Card](./docs/data-card.md)
-
-## Annotations
-
-- [.annotations/annotations.md](./.annotations/annotations.md)
-
-## Citation
-
-- [CITATION.cff](./CITATION.cff)
-
-## License
-
-This project is licensed under the [MIT License](./LICENSE).
+### Vehicle Origin and Fuel Efficiency
+
+The analysis also compared MPG by vehicle origin.
+
+The distributions suggest differences among vehicles from the United States, Japan, and Europe. Japanese vehicles generally show higher MPG values in this dataset, while U.S. vehicles generally show lower MPG values.
+
+There is still substantial overlap between the groups, so origin alone does not explain fuel efficiency.
+
+---
+
+## EDA Workflow
+
+The custom notebook follows a structured exploratory process:
+
+1. **Load the data**
+2. **Inspect the dataset**
+3. **Check data quality**
+4. **Describe numerical variables**
+5. **Visualize distributions**
+6. **Explore relationships**
+7. **Compare MPG by number of cylinders**
+8. **Compare MPG by vehicle origin**
+9. **Summarize findings and identify possible next steps**
+
+This workflow provides a repeatable approach for becoming familiar with an unfamiliar dataset.
+
+---
+
+## Skills Demonstrated
+
+This project demonstrates experience with:
+
+- Python
+- pandas
+- Seaborn
+- Matplotlib
+- Jupyter notebooks
+- Exploratory Data Analysis
+- Data-quality checks
+- Descriptive statistics
+- Missing-value analysis
+- Grouping and filtering
+- Correlation analysis
+- Data visualization
+- Interpreting distributions
+- Comparing categorical groups
+- Writing analytical observations
+- Git and GitHub
+- UV Python project management
+- Zensical documentation
+
+---
+
+## Project Structure
+
+```text
+datafun-04-eda/
+│
+├── docs/
+│   └── images/
+│       └── body-mass-by-sex.png
+│
+├── notebooks/
+│   └── eda_lukestevers.ipynb
+│
+├── src/
+│   └── datafun/
+│       └── app.py
+│
+├── project.log
+├── pyproject.toml
+├── README.md
+└── zensical.toml
