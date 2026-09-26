@@ -9,11 +9,11 @@
 # WHY: Centralizes project documentation configuration.
 
 [project]
-site_name = "Docs" # CUSTOM: Set the name that appears in the browser tab.
-site_url = "https://denisecase.github.io/datafun-04-eda/"
-repo_url = "https://github.com/denisecase/datafun-04-eda"
-repo_name = "datafun-04-eda"
-site_description = "Project Documentation" # CUSTOM: Set the description.
+site_name = "Luke Stevers - Exploratory Data Analysis"
+site_url = "https://lukestevers.github.io/module4/"
+repo_url = "https://github.com/lukestevers/module4"
+repo_name = "lukestevers/module4"
+site_description = "Exploratory data analysis of male and female penguin characteristics."
 docs_dir = "docs" # source directory for documentation markdown files
 site_dir = "site" # output directory for generated site (ignored by Git; not in repo)
 edit_uri = "edit/main/docs/" # "Edit this page" links (GitHub)
@@ -24,8 +24,9 @@ extra_javascript = [
 
 [project.extra]
 # WHY: Social links provide easy access to project repositories and profiles.
+
 social = [
-    {icon = "fontawesome/brands/github", link = "https://github.com/denisecase/datafun-04-eda" },
+    {icon = "fontawesome/brands/github", link = "https://github.com/lukestevers/module4" },
 ]
 
 [project.markdown_extensions]

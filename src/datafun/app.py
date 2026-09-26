@@ -1,7 +1,7 @@
 """src/datafun/app.py - Project script (example).
 
-Author: Denise Case
-Date: 2026-08
+Author: Luke Stevers
+Date: 2026-09
 
 RUN:
 
@@ -11,10 +11,10 @@ and paste the following command.
 
 uv run python -m datafun.app
 
-DOMAIN: Penguins
+DOMAIN: Penguin Sex Comparison
 
-Explore a dataset of penguins using a simple,
-repeatable exploratory data analysis (EDA) process.
+Explore differences between male and female penguins
+using a repeatable exploratory data analysis (EDA) process.
 
 EDA:
 
